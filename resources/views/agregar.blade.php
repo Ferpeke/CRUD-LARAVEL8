@@ -13,7 +13,8 @@
                 </div>
                 <div class="card-body">
                     <div>
-                        <form action="">
+                        <form action="{{ route('personas.store') }}" method="POST">
+                            @csrf
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="paterno" id="paterno" placeholder="Aqui va el apellido paterno">
                                 <label for="paterno">Apellido Paterno:</label>
@@ -27,12 +28,12 @@
                                 <label for="materno">Nombre:</label>
                             </div>
                             <div class="form-control">
-                                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                                <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" placeholder="Aqui va la fecha de Nacimiento">
+                                <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                                <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Aqui va la fecha de Nacimiento">
                             </div>
                             <hr>
                             <div class="text-center">
-                                <a href="{{ route('personas.index') }}" class="btn btn-secondary">Regresar</a>
+                                <a href="{{ route('personas.index') }}" class="btn btn-secondary">Regresar <i class="fa-solid fa-arrow-rotate-left"></i></a>
                                 <button class="btn btn-success">Agregar Nueva Persona <i class="fa-solid fa-floppy-disk"></i></button>
                             </div>
                         </form>

@@ -15,6 +15,14 @@
                     <div class="text-center">
                         <h3>Listado de Personas en el sistema</h3>
                     </div>
+                    @if ($mensaje = Session::get('success'))
+                        <div>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>{{ $mensaje }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>                   
+                        </div>
+                    @endif
                     <p>
                         <a class="btn btn-info" href="{{ route("personas.create")}}">Agregar nueva Persona <i class="fa-solid fa-user-plus"></i></a>
                     </p>
@@ -35,8 +43,20 @@
                                     <td>{{ $item->materno }}</td>
                                     <td>{{ $item->nombre }}</td>
                                     <td>{{ $item->fecha_nacimiento }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>
+                                        <form action="{{ route("personas.edit", $item->id) }}" method = "GET">
+                                            <button class="btn btn-warning">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route("personas.show", $item->id) }}" method = "GET">
+                                            <button class="btn btn-danger">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
